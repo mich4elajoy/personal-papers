@@ -104,14 +104,19 @@ header nav a {
 }
 
 .card {
+    display: block;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px;
     transition: 0.2s ease;
+
+    text-decoration: none;
+    color: inherit;
 }
 
 .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,.06);
+    border-color: #2563eb;
 }
