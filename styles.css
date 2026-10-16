@@ -1,3 +1,9 @@
+/* =========================================
+   1. ROOT VARIABLES
+   Defines the main colors used throughout
+   the website.
+========================================= */
+
 :root {
     --bg: #f6f8fa;
     --surface: #ffffff;
@@ -7,11 +13,25 @@
     --muted: #57606a;
 }
 
+
+/* =========================================
+   2. GLOBAL RESET
+   Removes default browser spacing and makes
+   element sizing easier to manage.
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+/* =========================================
+   3. BODY AND GENERAL PAGE STYLING
+   Sets the default font, background color,
+   text color, and line spacing.
+========================================= */
 
 body {
     font-family: Inter, Arial, sans-serif;
@@ -20,107 +40,228 @@ body {
     line-height: 1.5;
 }
 
-/* Header */
+
+/* =========================================
+   4. HEADER
+   Creates the horizontal white header at
+   the top of the page.
+========================================= */
 
 header {
-    height: 72px;
-    background: white;
+    min-height: 72px;
+    background: var(--surface);
     border-bottom: 1px solid var(--border);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 
-    padding: 0 24px;
+    padding: 16px 24px;
 }
+
+
+/* =========================================
+   5. WEBSITE LOGO
+   Styles the "Personal Papers" title in
+   the header.
+========================================= */
 
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
+    flex-shrink: 0;
 }
+
+
+/* =========================================
+   6. HEADER NAVIGATION
+   Arranges the navigation links in a row
+   with consistent spacing.
+========================================= */
 
 header nav {
     display: flex;
-    gap: 24px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px 24px;
 }
+
+
+/* Styles individual header navigation links */
 
 header nav a {
     color: var(--text);
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s ease;
 }
+
+
+/* Changes the link color when hovered */
 
 header nav a:hover {
     color: var(--accent);
 }
 
-/* Layout */
+
+/* =========================================
+   7. MAIN PAGE LAYOUT
+   Creates a two-column layout with the
+   sidebar on the left and content on the right.
+========================================= */
 
 .layout {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 250px minmax(0, 1fr);
     min-height: calc(100vh - 72px);
 }
 
-/* Sidebar */
+
+/* =========================================
+   8. SIDEBAR
+   Styles the left-hand navigation panel.
+========================================= */
 
 .sidebar {
-    background: white;
+    background: var(--surface);
     border-right: 1px solid var(--border);
     padding: 24px;
+
+    min-width: 0;
 }
+
+
+/* Sidebar heading, such as "Sections" */
 
 .sidebar h3 {
     margin-bottom: 20px;
+    font-size: 1.1rem;
 }
+
+
+/* Removes the default bullets from the list */
 
 .sidebar ul {
     list-style: none;
 }
 
+
+/* Adds spacing between sidebar list items */
+
 .sidebar li {
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 
+
+/* Styles the sidebar navigation links */
+
 .sidebar a {
-    text-decoration: none;
+    display: block;
+    padding: 10px 12px;
+
     color: var(--text);
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
+
+
+/* Highlights a sidebar link when hovered */
 
 .sidebar a:hover {
     color: var(--accent);
+    background: #eff6ff;
 }
 
-/* Main Content */
+
+/* Highlights the active sidebar link.
+   Add class="active" to the relevant link
+   in your HTML when needed. */
+
+.sidebar a.active {
+    color: var(--accent);
+    background: #eff6ff;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   9. MAIN CONTENT AREA
+   Controls the spacing and width of the
+   primary page content.
+========================================= */
 
 .content {
+    width: 100%;
+    min-width: 0;
+    max-width: 1440px;
     padding: 40px;
 }
+
+
+/* =========================================
+   10. HERO SECTION
+   Styles the introductory heading and
+   description at the top of the content.
+========================================= */
 
 .hero {
     margin-bottom: 40px;
 }
 
+
+/* Main page title */
+
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
 }
+
+
+/* Introductory description below the title */
 
 .hero p {
     color: var(--muted);
     font-size: 1.1rem;
+    max-width: 75ch;
 }
 
-/* Cards */
+
+/* =========================================
+   11. CONTENT CARDS GRID
+   Automatically arranges cards into columns
+   based on the available screen width.
+========================================= */
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 280px), 1fr)
+    );
+
     gap: 24px;
+    margin-bottom: 48px;
 }
+
+
+/* =========================================
+   12. INDIVIDUAL CONTENT CARDS
+   Defines the appearance of each clickable
+   Introduction, Map, Assessment, Suggestions,
+   and Reflection card.
+========================================= */
 
 .card {
     display: block;
+    min-width: 0;
 
     background: var(--surface);
     color: inherit;
@@ -137,57 +278,77 @@ header nav a:hover {
         border-color 0.2s ease;
 }
 
+
+/* Card heading */
+
 .card h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
     margin-bottom: 10px;
+
+    transition: color 0.2s ease;
 }
+
+
+/* Card description */
 
 .card p {
     color: var(--muted);
 }
 
+
+/* Card hover effect */
+
 .card:hover {
     transform: translateY(-4px);
-
     border-color: var(--accent);
 
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Responsive */
 
-@media (max-width: 768px) {
+/* Highlights the card heading on hover */
 
-    .layout {
-        grid-template-columns: 1fr;
-    }
+.card:hover h2 {
+    color: var(--accent);
+}
 
-    .sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-    }
 
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 16px;
-        gap: 12px;
-    }
+/* =========================================
+   13. CONTENT SECTIONS
+   Styles the sections below the cards that
+   contain the actual page information.
+========================================= */
 
-    header nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.content > section[id] {
+    scroll-margin-top: 24px;
+    margin-bottom: 40px;
+}
 
-    .content {
-        padding: 24px;
-    }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+/* Headings within the content sections */
 
-    /* General links and keyboard accessibility */
+.content > section[id] h2 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+
+/* Paragraphs within the content sections */
+
+.content > section[id] p {
+    color: var(--muted);
+    margin-bottom: 16px;
+    max-width: 75ch;
+}
+
+
+/* =========================================
+   14. KEYBOARD ACCESSIBILITY
+   Displays a visible outline when links or
+   cards are focused using the keyboard.
+========================================= */
 
 a:focus-visible {
     outline: 3px solid var(--accent);
@@ -195,82 +356,161 @@ a:focus-visible {
     border-radius: 4px;
 }
 
-/* Sidebar improvements */
 
-.sidebar a {
-    display: block;
-    padding: 10px 12px;
-    border-radius: 8px;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.sidebar a:hover {
-    color: var(--accent);
-    background: #eff6ff;
-}
-
-/* Highlight the current page */
-.sidebar a.active {
-    color: var(--accent);
-    background: #eff6ff;
-    font-weight: 600;
-}
-
-/* Main content improvements */
-
-.content {
-    min-width: 0;
-    max-width: 1200px;
-    width: 100%;
-}
-
-.content h1 {
-    font-size: 2.4rem;
-    line-height: 1.2;
-    margin-bottom: 16px;
-}
-
-.content h2 {
-    font-size: 1.5rem;
-    margin-top: 32px;
-    margin-bottom: 12px;
-}
-
-.content p {
-    color: var(--muted);
-    margin-bottom: 16px;
-    max-width: 75ch;
-}
-
-/* Card improvements */
-
-.card:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 4px;
-}
-
-.card:hover h2 {
-    color: var(--accent);
-}
-
-/* Mobile improvements */
+/* =========================================
+   15. TABLET AND MOBILE RESPONSIVE LAYOUT
+   Adjusts the layout for screens that are
+   768 pixels wide or smaller.
+========================================= */
 
 @media (max-width: 768px) {
+
+    /* Stacks the sidebar above the content */
+
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+
+    /* Changes the sidebar border for the
+       vertically stacked layout */
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+    }
+
+
+    /* Reduces header spacing and allows
+       the header to wrap on smaller screens */
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+    }
+
+
+    /* Centers and wraps the header links */
+
+    header nav {
+        justify-content: center;
+        gap: 10px 16px;
+    }
+
+
+    /* Reduces the logo size */
+
+    .logo {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+
+    /* Reduces the main content padding */
+
     .content {
         padding: 24px 20px;
     }
 
-    .content h1 {
+
+    /* Reduces the main heading size */
+
+    .hero h1 {
         font-size: 2rem;
     }
 
+
+    /* Makes the cards display in one column */
+
     .cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 16px;
     }
 
-    .logo {
+
+    /* Reduces the card padding */
+
+    .card {
+        padding: 20px;
+    }
+
+
+    /* Adjusts section headings for mobile */
+
+    .content > section[id] h2 {
         font-size: 1.5rem;
     }
 }
+
+
+/* =========================================
+   16. SMALL MOBILE SCREENS
+   Adds further adjustments for phones with
+   screens 480 pixels wide or smaller.
+========================================= */
+
+@media (max-width: 480px) {
+
+    /* Keeps the header navigation readable */
+
+    header nav {
+        gap: 8px 12px;
+    }
+
+
+    /* Slightly reduces navigation text size */
+
+    header nav a {
+        font-size: 0.9rem;
+    }
+
+
+    /* Reduces the sidebar padding */
+
+    .sidebar {
+        padding: 16px;
+    }
+
+
+    /* Reduces the content padding */
+
+    .content {
+        padding: 20px 16px;
+    }
+
+
+    /* Makes the hero heading fit small screens */
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+
+    /* Reduces card padding on small phones */
+
+    .card {
+        padding: 18px;
+    }
+}
+
+
+/* =========================================
+   17. REDUCED MOTION ACCESSIBILITY
+   Minimizes animated transitions for users
+   who prefer reduced motion.
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
