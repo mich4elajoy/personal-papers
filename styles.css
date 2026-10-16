@@ -186,4 +186,91 @@ header nav a:hover {
     .hero h1 {
         font-size: 2rem;
     }
+
+    /* General links and keyboard accessibility */
+
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Sidebar improvements */
+
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar a:hover {
+    color: var(--accent);
+    background: #eff6ff;
+}
+
+/* Highlight the current page */
+.sidebar a.active {
+    color: var(--accent);
+    background: #eff6ff;
+    font-weight: 600;
+}
+
+/* Main content improvements */
+
+.content {
+    min-width: 0;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.content h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.content h2 {
+    font-size: 1.5rem;
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+.content p {
+    color: var(--muted);
+    margin-bottom: 16px;
+    max-width: 75ch;
+}
+
+/* Card improvements */
+
+.card:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.card:hover h2 {
+    color: var(--accent);
+}
+
+/* Mobile improvements */
+
+@media (max-width: 768px) {
+    .content {
+        padding: 24px 20px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+}
 }
